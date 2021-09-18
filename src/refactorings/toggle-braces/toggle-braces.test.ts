@@ -165,6 +165,20 @@ if (isValid) {
 
   return <SayBye />;
 }`
+      },
+      {
+        description: "for loop",
+        code: "for (let i = 0; i < 5; i++) cons[cursor]ole.log(i);",
+        expected: `for (let i = 0; i < 5; i++) {
+  console.log(i);
+}`
+      },
+      {
+        description: "for loop, cursor on for",
+        code: "[cursor]for (let i = 0; i < 5; i++) console.log(i);",
+        expected: `for (let i = 0; i < 5; i++) {
+  console.log(i);
+}`
       }
     ],
     async ({ code, expected }) => {
@@ -343,6 +357,18 @@ doAnotherThing();`
     </section>
   );
 }`
+      },
+      {
+        description: "a for statement",
+        code: `for (let i = 0; i < 5; i++) { cons[cursor]ole.log(i); }`,
+        expected: `for (let i = 0; i < 5; i++)
+  console.log(i);`
+      },
+      {
+        description: "a for statement, cursor on for",
+        code: `[cursor]for (let i = 0; i < 5; i++) { console.log(i); }`,
+        expected: `for (let i = 0; i < 5; i++)
+  console.log(i);`
       }
     ],
     async ({ code, expected }) => {
@@ -423,6 +449,14 @@ doAnotherThing();`
     </section>
   );
 }`
+      },
+      {
+        description: "an empty for loop",
+        code: `for (let i = 0; i < 5; i++) { }`
+      },
+      {
+        description: "a for loop with multiple statements",
+        code: `for (let i = 0; i < 5; i++) { console.log("Hello"); console.log("World"); }`
       }
     ],
     async ({ code }) => {
