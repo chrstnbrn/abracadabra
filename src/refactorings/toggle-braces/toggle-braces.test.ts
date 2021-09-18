@@ -193,6 +193,20 @@ if (isValid) {
         expected: `while (true) {
   console.log("Hello");
 }`
+      },
+      {
+        description: "do while statement",
+        code: `do cons[cursor]ole.log("Hello"); while (true);`,
+        expected: `do {
+  console.log("Hello");
+} while (true);`
+      },
+      {
+        description: "do while statement, cursor on do",
+        code: `[cursor]do console.log("Hello"); while (true);`,
+        expected: `do {
+  console.log("Hello");
+} while (true);`
       }
     ],
     async ({ code, expected }) => {
@@ -395,6 +409,20 @@ doAnotherThing();`
         code: `[cursor]while (true) { console.log("Hello"); }`,
         expected: `while (true)
   console.log("Hello");`
+      },
+      {
+        description: "a do while statement",
+        code: `do { cons[cursor]ole.log("Hello"); } while (true);`,
+        expected: `do
+  console.log("Hello");
+while (true);`
+      },
+      {
+        description: "a do while statement, cursor on do",
+        code: `[cursor]do { console.log("Hello"); } while (true);`,
+        expected: `do
+  console.log("Hello");
+while (true);`
       }
     ],
     async ({ code, expected }) => {
@@ -491,6 +519,14 @@ doAnotherThing();`
       {
         description: "a while statement with multiple statements",
         code: `while (true) { console.log("Hello"); console.log("World"); }`
+      },
+      {
+        description: "an empty do while statement",
+        code: `do { } while (true);`
+      },
+      {
+        description: "a do while statement with multiple statements",
+        code: `do { console.log("Hello"); console.log("World"); } while (true);`
       }
     ],
     async ({ code }) => {
