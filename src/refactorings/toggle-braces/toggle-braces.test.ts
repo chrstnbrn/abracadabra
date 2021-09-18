@@ -167,17 +167,31 @@ if (isValid) {
 }`
       },
       {
-        description: "for loop",
+        description: "for statement",
         code: "for (let i = 0; i < 5; i++) cons[cursor]ole.log(i);",
         expected: `for (let i = 0; i < 5; i++) {
   console.log(i);
 }`
       },
       {
-        description: "for loop, cursor on for",
+        description: "for statement, cursor on for",
         code: "[cursor]for (let i = 0; i < 5; i++) console.log(i);",
         expected: `for (let i = 0; i < 5; i++) {
   console.log(i);
+}`
+      },
+      {
+        description: "while statement",
+        code: `while (true) cons[cursor]ole.log("Hello");`,
+        expected: `while (true) {
+  console.log("Hello");
+}`
+      },
+      {
+        description: "while statement, cursor on while",
+        code: `[cursor]while (true) console.log("Hello");`,
+        expected: `while (true) {
+  console.log("Hello");
 }`
       }
     ],
@@ -369,6 +383,18 @@ doAnotherThing();`
         code: `[cursor]for (let i = 0; i < 5; i++) { console.log(i); }`,
         expected: `for (let i = 0; i < 5; i++)
   console.log(i);`
+      },
+      {
+        description: "a while statement",
+        code: `while (true) { cons[cursor]ole.log("Hello"); }`,
+        expected: `while (true)
+  console.log("Hello");`
+      },
+      {
+        description: "a while statement, cursor on while",
+        code: `[cursor]while (true) { console.log("Hello"); }`,
+        expected: `while (true)
+  console.log("Hello");`
       }
     ],
     async ({ code, expected }) => {
@@ -451,12 +477,20 @@ doAnotherThing();`
 }`
       },
       {
-        description: "an empty for loop",
+        description: "an empty for statement",
         code: `for (let i = 0; i < 5; i++) { }`
       },
       {
-        description: "a for loop with multiple statements",
+        description: "a for statement with multiple statements",
         code: `for (let i = 0; i < 5; i++) { console.log("Hello"); console.log("World"); }`
+      },
+      {
+        description: "an empty while statement",
+        code: `while (true) { }`
+      },
+      {
+        description: "a while statement with multiple statements",
+        code: `while (true) { console.log("Hello"); console.log("World"); }`
       }
     ],
     async ({ code }) => {
